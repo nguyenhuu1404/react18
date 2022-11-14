@@ -1,0 +1,64 @@
+.app-container {
+    text-align: center;
+    .home-content {
+        padding-top: 300px;
+        width: 50%;
+        position: relative;
+        text-align: left;
+        .title-1 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        .getStart {
+            border-radius: 5px;
+            padding: 0px 15px;
+            border: 1px solid #959595;
+            background-color: #212121;
+            color: white;
+            height: 46px;
+            margin-top: 20px;
+            &:hover {
+                background-color: #3d3c3c;
+            }
+        }
+    }
+    .header-container {
+        .navbar {
+            padding-top: 20px;
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0) !important;
+            .sign-in {
+                border-radius: 5px;
+                padding: 0px 15px;
+                border: 1px solid #959595;
+                margin-right: 15px;
+                height: 40px;
+            }
+            .sign-up {
+                border-radius: 5px;
+                padding: 0px 15px;
+                border: 1px solid #959595;
+                background-color: #212121;
+                color: white;
+                height: 40px;
+                &:hover {
+                    background-color: #3d3c3c;
+                }
+            }
+            .nav-link {
+                &.active {
+                    color: #00bff0;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+video {
+    top: 0px;
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
+    left: 0px;
+}
