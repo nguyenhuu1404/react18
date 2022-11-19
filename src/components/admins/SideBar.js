@@ -1,5 +1,5 @@
 import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { AiOutlineUser, AiOutlineDashboard } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 const SideBar = (props) => {
@@ -7,16 +7,13 @@ const SideBar = (props) => {
         <>
             <Sidebar>
                 <Menu>
+                    <MenuItem icon={<AiOutlineDashboard />} routerLink={<Link to="/admin" />}> Dashboard </MenuItem>
                     <SubMenu
-                        suffix={<span className="badge yellow">3</span>}
-                        icon={<FaGithub />}
-                        label="Charts"
-                        >
-                        <MenuItem routerLink={<Link to="/documentation" />}> Pie charts </MenuItem>
-                        <MenuItem> Line charts </MenuItem>
+                        icon={<AiOutlineUser />}
+                        label="Users"
+                    >
+                        <MenuItem routerLink={<Link to="/admin/users" />}> List Users </MenuItem>
                     </SubMenu>
-                    <MenuItem> Documentation </MenuItem>
-                    <MenuItem> Calendar </MenuItem>
                 </Menu>
             </Sidebar>
         </>

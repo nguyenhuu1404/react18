@@ -14,7 +14,7 @@ function Header() {
           <Nav className="me-auto">
             <NavLink className="nav-link" to="/">Home</NavLink>
             <NavLink className="nav-link" to="/users">Users</NavLink>
-            <NavLink className="nav-link" to="/admins">Admins</NavLink>
+            <NavLink className="nav-link" to="/admin  ">Admins</NavLink>
           </Nav>
           <Nav>
             <button className="sign-in">Sign in</button>
