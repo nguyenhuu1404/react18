@@ -4,6 +4,9 @@ import App from '../App'
 import User from "../components/users/User"
 import Admin from "../components/admins/Admin"
 import HomePage from "../components/home/HomePage";
+import Index from "../components/admins/users/Index";
+import Dashboard from "../components/admins/Dashboard";
+import AdminError from "../components/admins/errors/AdminError";
 
 export const routers = createBrowserRouter([
   {
@@ -19,14 +22,14 @@ export const routers = createBrowserRouter([
     ],
   },
   {
-    path: "/admins",
+    path: "/admin",
     element: <Admin />,
-    errorElement: <ErrorPage />,
+    errorElement: <AdminError />,
     children: [
-      { index: true, element: <HomePage /> },
+      { index: true, element: <Dashboard /> },
       {
-        path: "/admins/users",
-        element: <User />,
+        path: "/admin/users",
+        element: <Index />,
       },  
     ],
   },
