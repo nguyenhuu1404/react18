@@ -4,4 +4,8 @@ const createUserApi = (data) => {
     return axios.post('api/v1/register', data)
 }
 
-export { createUserApi }
+const getListUserApi = (data) => {
+    return axios.get('api/v1/users')
+}
+
+export { createUserApi, getListUserApi }

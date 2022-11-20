@@ -5,7 +5,7 @@ import { createUserApi } from '../../../services/API.service'
 import { toast } from 'react-toastify';
 
 const CreateUser = (props) => {
-  const { show, handleShow } = props
+  const { show, handleShow, getListUser } = props
   const handleClose = () => {
     handleShow(false)
     setEmail("")
@@ -28,6 +28,7 @@ const CreateUser = (props) => {
         if (res.success) {
             toast.success(res.message)
             handleClose()
+            await getListUser()
         }
     } catch (e) {
         toast.error(e.message)
