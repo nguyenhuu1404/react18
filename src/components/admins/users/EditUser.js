@@ -6,12 +6,13 @@ import { toast } from 'react-toastify';
 import _ from 'lodash';
 
 const EditUser = (props) => {
-  const { show, handleShow, getListUser, dataUpdate } = props
+  const { show, handleShow, getListUser, dataUpdate, setDataUpdate } = props
   const handleClose = () => {
     handleShow(false)
     setEmail("")
     setName("")
     setPassword("")
+    setDataUpdate({})
   }
 
   const [email, setEmail] = useState("")
