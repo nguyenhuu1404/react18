@@ -13,11 +13,16 @@ const deleteUserApi = (id) => {
 }
 
 const getListUserApi = () => {
+
     return axios.get('api/v1/users')
 }
 
 const getPaginationUserApi = (page) => {
-    return axios.get(`api/v1/users?page=${page}`)
+    return axios.get(`api/v1/users/paginate?page=${page}`)
 }
 
-export { createUserApi, getListUserApi, editUserApi, deleteUserApi, getPaginationUserApi }
+const loginApi = (data) => {
+    return axios.post('api/v1/login', data)
+}
+
+export { createUserApi, getListUserApi, editUserApi, deleteUserApi, getPaginationUserApi, loginApi }

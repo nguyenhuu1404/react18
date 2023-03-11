@@ -1,8 +1,11 @@
 import { deleteUserApi } from '../../../services/API.service'
 import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
+import { useSelector } from "react-redux"
 
 const UserPagination = (props) => {
+    //const users = useSelector(state => state.listUser.users.list)
+    const {listUser: { users, pagination }} = useSelector(state => state)
     const {
         listUsers,
         clickShowUpdateUser,
@@ -18,7 +21,7 @@ const UserPagination = (props) => {
         }
         try {
             const res = await deleteUserApi(userId)
-            if (res.success) {
+            if (res.status) {
                 await getListUser()
                 toast.success(res.message)
             }
@@ -49,8 +52,8 @@ const UserPagination = (props) => {
             </thead>
             <tbody>
                 {
-                    listUsers && listUsers.length > 0 &&
-                    listUsers.map((user, key) => {
+                    users && users.length > 0 &&
+                    users.map((user, key) => {
                         return (
                             <tr key={`list-user-${key}`}>
                                 <th>{user.id}</th>
@@ -66,7 +69,7 @@ const UserPagination = (props) => {
                     })
                 }
                 {
-                    listUsers && listUsers.length === 0 &&
+                    users && users.length === 0 &&
                     (
                         <td colSpan={'4'}>No data</td>
                     )
@@ -79,7 +82,7 @@ const UserPagination = (props) => {
                 onPageChange={handlePageClick}
                 pageRangeDisplayed={3}
                 marginPagesDisplayed={2}
-                pageCount={pageCount}
+                pageCount={pagination ? pagination.total_page : 1}
                 previousLabel="< Prev"
                 pageClassName="page-item"
                 pageLinkClassName="page-link"

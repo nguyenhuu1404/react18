@@ -25,7 +25,7 @@ const CreateUser = (props) => {
     let data = {email, password, name}
     try {
         const res = await createUserApi(data)
-        if (res.success) {
+        if (res.status) {
             toast.success(res.message)
             handleClose()
             await getListUser()

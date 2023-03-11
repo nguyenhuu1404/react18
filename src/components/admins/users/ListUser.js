@@ -10,7 +10,7 @@ const ListUser = (props) => {
         }
         try {
             const res = await deleteUserApi(userId)
-            if (res.success) {
+            if (res.status) {
                 await getListUser()
                 toast.success(res.message)
             }

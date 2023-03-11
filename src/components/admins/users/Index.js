@@ -6,8 +6,13 @@ import { toast } from 'react-toastify';
 import EditUser from "./EditUser";
 import UserInfo from "./UserInfo";
 import UserPagination from "./UserPagination";
+import { useDispatch } from "react-redux"
+import { listUserPaginate } from "../../../redux/actions/UsersAction"
+import { useNavigate } from "react-router-dom"
 
 const Index = (props) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const [show, setShowCreateUser] = useState(false)
     const handleShow = () => setShowCreateUser(true)
     const [showUpdateUser, setShowUpdateUser] = useState(false)
@@ -33,9 +38,13 @@ const Index = (props) => {
     const getListUserPagination = async () => {
         try {
             const res = await getPaginationUserApi(currentPage)
-            setListUsers(res.data)
-            setPageCount(res.pagination.total_page)
+            //setListUsers(res.data)
+            //setPageCount(res.pagination.total_page)
+            dispatch(listUserPaginate(res.data, res.pagination))
         } catch (e) {
+            if (e.data.code === 401) {
+                navigate("/admin/login");
+            }
             toast.error(e.message)
         }
     }

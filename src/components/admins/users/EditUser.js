@@ -35,7 +35,7 @@ const EditUser = (props) => {
     let data = {password, name}
     try {
         const res = await editUserApi(dataUpdate.id, data)
-        if (res.success) {
+        if (res.status) {
             toast.success(res.message)
             handleClose()
             await getListUser()
