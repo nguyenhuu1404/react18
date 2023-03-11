@@ -6,15 +6,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { RouterProvider } from "react-router-dom";
 import { routers } from './routers/Router'
 import { ProSidebarProvider } from 'react-pro-sidebar';
-
+import { Provider } from 'react-redux'
+import { store, persistor} from "./redux/Store"
+import { PersistGate } from 'redux-persist/integration/react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ProSidebarProvider>
-      <RouterProvider router={routers} />
-    </ProSidebarProvider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <React.StrictMode>
+          <ProSidebarProvider>
+            <RouterProvider router={routers} />
+          </ProSidebarProvider>
+      </React.StrictMode>
+    </PersistGate>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

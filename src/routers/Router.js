@@ -7,6 +7,7 @@ import HomePage from "../components/home/HomePage";
 import Index from "../components/admins/users/Index";
 import Dashboard from "../components/admins/Dashboard";
 import AdminError from "../components/admins/errors/AdminError";
+import LoginForm from "../components/admins/auth/LoginForm";
 
 export const routers = createBrowserRouter([
   {
@@ -31,6 +32,13 @@ export const routers = createBrowserRouter([
         path: "/admin/users",
         element: <Index />,
       },  
+    ],
+  },
+  {
+    path: "/admin/login",
+    errorElement: <AdminError />,
+    children: [
+      { index: true, element: <LoginForm /> },
     ],
   },
 ]);

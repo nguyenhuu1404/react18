@@ -6,12 +6,13 @@ import { toast } from 'react-toastify';
 import _ from 'lodash';
 
 const EditUser = (props) => {
-  const { show, handleShow, getListUser, dataUpdate } = props
+  const { show, handleShow, getListUser, dataUpdate, setDataUpdate } = props
   const handleClose = () => {
     handleShow(false)
     setEmail("")
     setName("")
     setPassword("")
+    setDataUpdate({})
   }
 
   const [email, setEmail] = useState("")
@@ -34,7 +35,7 @@ const EditUser = (props) => {
     let data = {password, name}
     try {
         const res = await editUserApi(dataUpdate.id, data)
-        if (res.success) {
+        if (res.status) {
             toast.success(res.message)
             handleClose()
             await getListUser()
